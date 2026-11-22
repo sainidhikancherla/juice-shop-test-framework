@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { getProduct } from '../utils/api';
+import { getProduct } from '../../utils/api';
 
 test('product details API returns the correct product @regression', async ({ request }) => {
   const product = await getProduct(request, 6);

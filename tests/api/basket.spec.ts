@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { registerUser, loginViaApi, addToBasket, removeBasketItem, getBasket } from '../utils/api';
+import { registerUser, loginViaApi, addToBasket, removeBasketItem, getBasket } from '../../utils/api';
 
 test.describe('Basket API', () => {
   test('logged-in user can add a product to the basket @smoke', async ({ request }) => {

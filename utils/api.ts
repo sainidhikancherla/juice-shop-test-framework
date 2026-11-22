@@ -1,9 +1,8 @@
 
 import { APIRequestContext, expect } from '@playwright/test';
-import { randomUUID } from 'node:crypto';
 
 export async function registerUser(request: APIRequestContext) {
-  const email = `qa.${randomUUID()}@example.com`;
+  const email = `qa.${Date.now()}.${Math.random().toString(36).slice(2)}@example.com`;
   const password = 'Test@12345';
 
   const response = await request.post('/api/Users/', {

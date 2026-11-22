@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loginViaApi, registerUser } from '../utils/api';
+import { loginViaApi, registerUser } from '../../utils/api';
 
 test('registering a new user succeeds @smoke', async ({ request }) => {
   const user = await registerUser(request);

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/HomePage.ts';
-import { LoginPage } from '../pages/LoginPage.ts';
-import { registerUser } from '../utils/api.ts';
+import { HomePage } from '../../pages/HomePage.ts';
+import { LoginPage } from '../../pages/LoginPage.ts';
+import { registerUser } from '../../utils/api.ts';
 
 test.describe('Login', () => {
   test('valid user can log in @smoke', async ({ page, request }) => {
