@@ -1,0 +1,9 @@
+{
+  "matchingSearches": [
+    { "term": "apple juice", "expectedProduct": "Apple Juice (1000ml)" },
+    { "term": "banana", "expectedProduct": "Banana Juice (1000ml)" }
+  ],
+  "noMatchSearches": [
+    { "term": "zzzzzz-no-such-product" }
+  ]
+}

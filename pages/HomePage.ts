@@ -16,7 +16,33 @@ export class HomePage {
       .click({ timeout: 3000 }).catch(() => {});
   }
 
-  async search(term: string) {
+  async searchViaUrl(term: string) {
     await this.page.goto(`/#/search?q=${encodeURIComponent(term)}`);
   }
+
+
+// inside the HomePage class
+async search(term: string) {
+  await this.page.getByRole('button', { name: 'Open search' }).click();
+  const box = this.page.getByRole('textbox');
+  await box.fill(term);
+  await box.press('Enter');
+}
+
+productNames() {
+  return this.page.locator('.item-name');
+}
+
+productCards() {
+  return this.page.locator('mat-card').filter({
+    has: this.page.getByRole('button', { name: /add to basket/i }),
+  });
+}
+searchResultsHeading(term: string) {
+  return this.page.getByText(`Search Results - ${term}`);
+}
+
+noResultsMessage() {
+  return this.page.getByText('No results found');
+}
 }
