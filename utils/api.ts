@@ -93,6 +93,16 @@ export async function getBasket(
       name: string;
       price: number;
       BasketItem: { id: number; ProductId: number; BasketId: number; quantity: number };
+
     }>;
   };
+}
+  export async function findProductId(request: APIRequestContext, name: string) {
+  const response = await request.get(`/rest/products/search?q=${encodeURIComponent(name)}`);
+  expect(response.status(), 'product search should return 200').toBe(200);
+
+  const body = await response.json();
+  const match = body.data.find((p: { name: string }) => p.name === name);
+  expect(match, `product "${name}" should exist in the shop`).toBeTruthy();
+  return match.id as number;
 }

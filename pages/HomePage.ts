@@ -32,7 +32,25 @@ async search(term: string) {
 productNames() {
   return this.page.locator('.item-name');
 }
+// pages/HomePage.ts
+async addToBasket(product: string) {
+  const saved = this.page.waitForResponse(
+    (r) => r.url().includes('/api/BasketItems') && r.request().method() === 'POST',
+  );
+  await this.productCards()
+    .filter({ has: this.page.getByText(product, { exact: true }) })
+    .getByRole('button', { name: /add to basket/i })
+    .click();
+  await saved;
+}
 
+cartButton() {
+  return this.page.getByRole('button', { name: /shopping cart/i });
+}
+
+async openBasket() {
+  await this.cartButton().click();
+}
 productCards() {
   return this.page.locator('mat-card').filter({
     has: this.page.getByRole('button', { name: /add to basket/i }),
