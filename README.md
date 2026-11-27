@@ -146,3 +146,41 @@ Keep the quotes around the tag in PowerShell.
 The application under test is an intentionally insecure demo shop that runs
 locally and is used for practice. All test data is generated, and no real
 personal data is used. Juice Shop is an OWASP project (MIT licence).
+
+## Test scripts
+
+| Command | What it runs |
+|---|---|
+| `npm test` | All 23 tests |
+| `npm run test:smoke` | The 10 critical-path tests (`@smoke`) |
+| `npm run test:regression` | The 13 remaining tests (`@regression`) |
+| `npm run test:api` | API tests only (`tests/api`) |
+| `npm run test:ui` | UI tests only (`tests/ui`) |
+| `npm run test:db` | Database checks only (`tests/db`) |
+| `npm run report` | Opens the last HTML report |
+
+Every test title ends with `@smoke` or `@regression`, so smoke plus regression
+covers the whole suite.
+
+## Debugging failures
+
+When a test fails, Playwright keeps the evidence automatically:
+
+- **Screenshot:** the page at the moment of failure
+- **Trace:** a step-by-step recording of every action, network call and page state
+- **HTML report:** everything above in one place
+
+To investigate a failure:
+
+1. Run `npm run report` to open the report.
+2. Open the failed test and check the error message and the screenshot.
+3. Open the trace to step through the test, and look at the network calls and
+   the page at each step.
+
+
+*A failed test opened in the Playwright trace viewer.*
+
+**Retry policy:** no retries on a local machine, so a failing test is never
+hidden. In CI, a failed test gets one retry to absorb rare environment problems.
+A test that passes only on retry is treated as a bug to investigate, not as a
+pass.
