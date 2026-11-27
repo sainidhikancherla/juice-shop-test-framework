@@ -132,6 +132,7 @@ Keep the quotes around the tag in PowerShell.
   inside `node_modules` are the driver, not the data. The real file is in the
   shop's `data` folder, and it was confirmed to be live by registering a user and
   finding the row.
+  - **Intermittent "no product cards" failures under parallel load.** The tests passed alone but failed in full runs because the local shop was slow with four workers. I reduced the workers, wait for the product-list request in HomePage.open(), and set a longer expect timeout.
 
 ## Limitations and possible extensions
 

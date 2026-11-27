@@ -13,6 +13,7 @@ export function query<T = Record<string, unknown>>(
 ): T[] {
   const db = new DatabaseSync(DB_PATH, { readOnly: true });
   try {
+    db.exec('PRAGMA busy_timeout = 5000'); // wait up to 5 seconds if the file is busy
     return db.prepare(sql).all(...params) as unknown as T[];
   } finally {
     db.close();
