@@ -1,8 +1,3 @@
----
-noteId: "537fa700e70a11f19b97e74098cd8721"
-tags: []
-
----
 
 # Juice Shop Test Automation Framework
 
