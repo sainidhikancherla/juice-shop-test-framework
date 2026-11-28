@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 
 export class BasketPage {
   constructor(private readonly page: Page) {}
@@ -45,5 +45,6 @@ export class BasketPage {
 
   async openBasket() {
     await this.cartButton().click();
+    await expect(this.page).toHaveURL(/basket/);
   }
 }

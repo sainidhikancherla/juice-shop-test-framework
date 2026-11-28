@@ -1,0 +1,18 @@
+{
+  "address": {
+    "name": "Test User",
+    "country": "India",
+    "mobile": "9999999999",
+    "zip": "500001",
+    "address": "1 Test Street",
+    "city": "Hyderabad",
+    "state": "Telangana"
+  },
+  "delivery": "One Day Delivery",
+  "card": {
+    "name": "Test User",
+    "number": "1234567890123456",
+    "expiryMonth": "6",
+    "expiryYear": "2084"
+  }
+}
